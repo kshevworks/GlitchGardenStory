@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoreGameArea : MonoBehaviour
+public class DefenderSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject defender;
+    private Defender _defender;
+    public Defender Defender {
+        set => _defender = value;
+    }
 
     private void OnMouseDown()
     {
-        SpawnDefender(GetSquareClicked());
+        if (_defender)
+        {
+            SpawnDefender(GetSquareClicked());
+        }
+        
     }
 
 
@@ -29,6 +36,6 @@ public class CoreGameArea : MonoBehaviour
     }
     private void SpawnDefender(Vector2 roundedPos)
     {
-        GameObject newDefender = Instantiate(defender,roundedPos, Quaternion.identity);
+        Defender newDefender = Instantiate(_defender,roundedPos, Quaternion.identity);
     }
 }
