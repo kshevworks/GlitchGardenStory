@@ -34,5 +34,8 @@ public class StarDisplay : MonoBehaviour
     {
         starDisplay.text = stars.ToString();
     }
+
+    public bool HaveEnoughStars(int amount) => amount <= stars;
+    
     
 }
