@@ -13,13 +13,18 @@ public class AttackerSpawner : MonoBehaviour
     private bool _spawn = true;
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    private IEnumerator Start()
     {
         while (_spawn)
         {
             yield return new WaitForSeconds(Random.Range(minSpawnDelay, maxSpawnDelay));
             SpawnAttacker();
         }
+    }
+
+    public void StopSpawning()
+    {
+        _spawn = false;
     }
 
     private void SpawnAttacker()
