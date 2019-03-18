@@ -7,12 +7,12 @@ public class StarDisplay : MonoBehaviour
 {
     [SerializeField] private int stars = 100;
 
-    private Text starDisplay;
+    private Text _starDisplay;
     
     // Start is called before the first frame update
     private void Start()
     {
-        starDisplay = GetComponent<Text>();
+        _starDisplay = GetComponent<Text>();
         UpdateDisplay();
     }
 
@@ -32,7 +32,7 @@ public class StarDisplay : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        starDisplay.text = stars.ToString();
+        _starDisplay.text = stars.ToString();
     }
 
     public bool HaveEnoughStars(int amount) => amount <= stars;

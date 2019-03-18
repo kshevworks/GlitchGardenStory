@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 3907444963748190568}
   - component: {fileID: 2748407221321616518}
   - component: {fileID: 4206888187689976441}
+  - component: {fileID: 3181964599669385189}
   m_Layer: 0
   m_Name: Gnome
   m_TagString: Untagged
@@ -182,7 +183,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8470745, y: 0.8470745}
   m_EdgeRadius: 0
 --- !u!95 &2748407221321616518
 Animator:
@@ -218,3 +219,18 @@ MonoBehaviour:
   projectile: {fileID: 4162354600547503573, guid: d1916c4195ca5514f99b54c8ebe95ede,
     type: 3}
   gun: {fileID: 6034307640044772171}
+--- !u!114 &3181964599669385189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483893251708294357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e01e05d3b62cd9d49ac459766b5a54c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 200
+  deathVfx: {fileID: 9134286427020695114, guid: 72af1ae5cf884044cae1bd57ad8f5f30,
+    type: 3}
