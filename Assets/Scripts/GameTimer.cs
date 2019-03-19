@@ -9,6 +9,7 @@ public class GameTimer : MonoBehaviour
     [SerializeField] private float levelTime = 10f;
 
     private bool _triggeredLevelFinished = false;
+    private float _countedLevelTime;
     
     private Slider _slider;
     private LevelController _levelController;
@@ -17,15 +18,16 @@ public class GameTimer : MonoBehaviour
     {
         _levelController = FindObjectOfType<LevelController>();
         _slider = GetComponent<Slider>();
+        _countedLevelTime = levelTime * PlayerPrefsController.DifficultyLevel / 2;
     }
 
     // Update is called once per frame
     private void Update()
     {
         if(_triggeredLevelFinished) return;
-        _slider.value = Time.timeSinceLevelLoad / levelTime;
+        _slider.value = Time.timeSinceLevelLoad / _countedLevelTime;
 
-        bool timerFinished = Time.timeSinceLevelLoad >= levelTime;
+        bool timerFinished = Time.timeSinceLevelLoad >= _countedLevelTime;
         if (timerFinished)
         {
             _levelController.LevelTimerFinished();

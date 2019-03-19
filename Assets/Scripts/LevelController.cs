@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelController : MonoBehaviour
 {
     [SerializeField] private GameObject winLabel;
-    [SerializeField] private GameObject looseLabel;
+    [SerializeField] private GameObject loseLabel;
     [SerializeField] private float timeToWin = 4f;
     
     private int _numberOfAttackers = 0;
@@ -17,7 +17,8 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        winLabel.SetActive(false);
+        if(winLabel) winLabel.SetActive(false);
+        if(loseLabel) loseLabel.SetActive(false);
         _audioSource = GetComponent<AudioSource>();
         _levelLoader = FindObjectOfType<LevelLoader>();
     }
@@ -57,6 +58,13 @@ public class LevelController : MonoBehaviour
         {
             spawner.StopSpawning();
         }
+        
+    }
+
+    public void HandleLoseCondition()
+    {
+        loseLabel.SetActive(true);
+        Time.timeScale = 0;
         
     }
 

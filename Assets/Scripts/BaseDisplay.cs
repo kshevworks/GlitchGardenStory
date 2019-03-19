@@ -8,30 +8,33 @@ public class BaseDisplay : MonoBehaviour
     [SerializeField] private int lives = 20;
     [SerializeField] private int damage = 1;
 
+    private int _countedLives;
+    
     private Text _livesText;
-
-    private LevelLoader _levelLoader;
+    private LevelController _levelController;
     // Start is called before the first frame update
     private void Start()
     {
         _livesText = GetComponent<Text>();
-        _levelLoader = FindObjectOfType<LevelLoader>();
+        _levelController = FindObjectOfType<LevelController>();
+        _countedLives = lives * 2 / (int) PlayerPrefsController.DifficultyLevel;
+        if (_countedLives <= 0) _countedLives = 1;
         UpdateDisplay();
     }
     
     private void UpdateDisplay()
     {
-        _livesText.text = lives.ToString();
+        _livesText.text = _countedLives.ToString();
     }
 
     public void TakeLife()
     {
-        lives -= damage;
+        _countedLives -= damage;
         UpdateDisplay();
 
-        if (lives <= 0)
+        if (_countedLives <= 0)
         {
-            _levelLoader.LoadLoseScreen();
+            _levelController.HandleLoseCondition();
         }
     }
     

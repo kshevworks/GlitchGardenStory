@@ -13,6 +13,8 @@ public class Attacker : MonoBehaviour
     private Animator _animator;
     private LevelController _levelController;
 
+    private float _countedMovementSpeed;
+
 
     private void Awake()
     {
@@ -22,24 +24,23 @@ public class Attacker : MonoBehaviour
 
     private void OnDestroy()
     {
-        _levelController.AttackerKilled();
+        if (_levelController) _levelController.AttackerKilled();
     }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-        transform.Translate(Vector2.left * Time.deltaTime * _currentSpeed);
+        transform.Translate(Vector2.left * Time.deltaTime * _countedMovementSpeed);
         UpdateAnimationState();
     }
 
-    public void SetMovementSpeed(float speed) => _currentSpeed = speed;
+    public void SetMovementSpeed(float speed) => _countedMovementSpeed = speed * PlayerPrefsController.DifficultyLevel / 2;
 
     public void Attack(GameObject target)
     { 

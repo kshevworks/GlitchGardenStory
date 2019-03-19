@@ -43,4 +43,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46a412b5a9d288245922cd2acb2898f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToWait: 4
+  timeToWait: 10
+  mainMenuMusic: {fileID: 8300000, guid: 93ef585af3e67a94f83180efc521fd96, type: 3}
+  optionsMusic: {fileID: 8300000, guid: 256545920c2fbe84db30e6b51c194bc5, type: 3}
+  levelMusic:
+  - {fileID: 8300000, guid: 0660bd0f7a9b9db4787ca0584dbd983a, type: 3}
