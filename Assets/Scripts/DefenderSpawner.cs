@@ -6,6 +6,11 @@ public class DefenderSpawner : MonoBehaviour
 {
     private Defender _defender;
     private StarDisplay _starDisplay;
+
+    private GameObject _defenderParent;
+
+    private const string DEFENDER_PARENT_NAME = "Defenders";
+    
     public Defender Defender {
         set => _defender = value;
     }
@@ -13,6 +18,16 @@ public class DefenderSpawner : MonoBehaviour
     private void Start()
     {
         _starDisplay = FindObjectOfType<StarDisplay>();
+        CreateDefenderParent();
+    }
+
+    private void CreateDefenderParent()
+    {
+        _defenderParent = GameObject.Find(DEFENDER_PARENT_NAME);
+        if (!_defenderParent)
+        {
+            _defenderParent = new GameObject(DEFENDER_PARENT_NAME);
+        }
     }
 
     private void AttemptToPlaceDefenderAt(Vector2 gridPos)
@@ -53,5 +68,6 @@ public class DefenderSpawner : MonoBehaviour
     private void SpawnDefender(Vector2 roundedPos)
     {
         Defender newDefender = Instantiate(_defender,roundedPos, Quaternion.identity);
+        newDefender.transform.parent = _defenderParent.transform;
     }
 }
